@@ -1,0 +1,19 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Gallery Name
+        required: true
+        span: left
+    date:
+        label: Date
+        type: datepicker
+        mode: date
+        span: right
+    images:
+        label: Images
+        type: fileupload
+        required: true
+        mode: image

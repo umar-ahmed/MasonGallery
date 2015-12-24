@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Gallery
+
+# Model Form Field configuration
+form: $/umar/masongallery/models/gallery/fields.yaml
+
+# Model Class name
+modelClass: UMAR\MasonGallery\Models\Gallery
+
+# Default redirect location
+defaultRedirect: umar/masongallery/galleries
+
+# Create page
+create:
+    title: Create Gallery
+    redirect: umar/masongallery/galleries/update/:id
+    redirectClose: umar/masongallery/galleries
+
+# Update page
+update:
+    title: Edit Gallery
+    redirect: umar/masongallery/galleries
+    redirectClose: umar/masongallery/galleries
+
+# Preview page
+preview:
+    title: Preview Gallery
