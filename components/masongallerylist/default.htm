@@ -1,10 +1,12 @@
+{% for gallery in __SELF__.galleries %}
 <h3>{{ gallery.name }} <small>{{ gallery.date }}</small></h3>
 <div id="{{ __SELF__ }}" class="popup-gallery grid js-masonry" data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": {{ width }}  }'>
     {% for i, image in gallery.images %}
         <div class="grid-item">
-        <a href="{{ image.path }}">
-            <img title="{{ image.title }}" alt="{{ image.description }}" src="{{ gallery.images[i].thumb( width , height ) }}" width="{{ width }}" height="{{ height }}">
-        </a>
+            <a href="{{ image.path }}">
+                <img title="{{ image.title }}" alt="{{ image.description }}" src="{{ gallery.images[i].thumb( width , height ) }}" width="{{ width }}" height="{{ height }}">
+            </a>
         </div>
     {% endfor %}
 </div>
+{% endfor %}

@@ -3,17 +3,27 @@ $(document).ready(function() {
 		delegate: 'a',
 		type: 'image',
 		tLoading: 'Loading image #%curr%...',
-		mainClass: 'mfp-img-mobile',
+        closeOnContentClick: false,
+		closeBtnInside: false,
+		mainClass: 'mfp-with-zoom mfp-img-mobile',
 		gallery: {
 			enabled: true,
 			navigateByImgClick: true,
 			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
 		},
 		image: {
+            verticalFit: true,
 			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 			titleSrc: function(item) {
-				return item.el.attr('title') + '<small>' + item.el.attr('alt') + '</small>';
+                return item.el.find('img').attr('title') + '<small>' + item.el.find('img').attr('alt') + '</small>';
+            }
+		},
+        zoom: {
+            enabled: true,
+            duration: 300,
+            opener: function(element) {
+				return element.find('img');
 			}
-		}
+        }
 	});
 });

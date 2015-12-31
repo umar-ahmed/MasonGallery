@@ -17,6 +17,7 @@ class Gallery extends Model
         'name' => 'required',
         'date'  => 'date',
         'images' => 'required',
+        'show_gallery_page' => 'required',
     ];
     
     
@@ -47,7 +48,7 @@ class Gallery extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [
-        'images' => 'System\Models\File',
+        'images' => ['System\Models\File', 'order' => 'sort_order'],
     ];
 
 }

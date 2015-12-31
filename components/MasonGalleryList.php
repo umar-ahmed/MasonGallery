@@ -5,21 +5,26 @@ use Cms\Classes\ComponentBase;
 use System\Classes\CombineAssets;
 use UMAR\MasonGallery\Models\Gallery;
 
-class MasonGallery extends ComponentBase {
+class MasonGalleryList extends ComponentBase
+{
 
-    public function componentDetails() {
+    public $galleries;
+
+    public function componentDetails()
+    {
         return [
-            'name'        => 'Mason Gallery',
-            'description' => 'Output a Masonry gallery with Magnific Popup.'
+            'name'        => 'Mason Gallery List',
+            'description' => 'Outputs all galleries.'
         ];
     }
 
     public function defineProperties() {
         return [
-            'galleryId' => [
-              'title'             => 'Gallery',
-              'description'       => 'Select a gallery from the dropdown.',
-              'type'              => 'dropdown'
+            'galleryPage' => [
+              'title'             => 'Restriction',
+              'description'       => 'Show gallery page galleries only.',
+              'type'              => 'checkbox',
+              'default'           => 'true',
             ],
             'height' => [
               'title'             => 'Height',
@@ -42,11 +47,6 @@ class MasonGallery extends ComponentBase {
         ];
     }
     
-    public function getGalleryIdOptions() {
-        return Gallery::select('id', 'name')->orderBy('name')->get()->lists('name', 'id');
-    }
-    
-    
     public function onRun() {
         $css = [
             'assets/css/magnific-popup.css'
@@ -63,8 +63,11 @@ class MasonGallery extends ComponentBase {
     
     
     public function onRender(){
-        $gallery = new Gallery;
-        $this->gallery = $this->page['gallery'] = $gallery->where('id', '=', $this->property('galleryId'))->first();
+        if ( $this->property('galleryPage') == true ) {
+            $this->galleries = Gallery::where('show_gallery_page', '=', 1)->get();
+        } else {
+            $this->galleries = Gallery::all();
+        }
         $this -> page['height'] = $this -> property('height');
         $this -> page['width']  = $this -> property('width');
     }

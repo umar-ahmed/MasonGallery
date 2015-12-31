@@ -7,11 +7,18 @@ fields:
         label: Gallery Name
         required: true
         span: left
+    show_gallery_page:
+        label: Show in Gallery Page
+        type: switch
+        default: true
+        span: right
+        required:  true
+        comment: Flick this switch to specify if this gallery should be shown on the main Gallery page
     date:
         label: Date
         type: datepicker
         mode: date
-        span: right
+        span: left
     images:
         label: Images
         type: fileupload

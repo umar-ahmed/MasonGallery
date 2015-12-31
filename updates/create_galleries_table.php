@@ -13,7 +13,8 @@ class CreateGalleriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
-            $table->string('date');
+            $table->string('date')->nullable();
+            $table->boolean('show_gallery_page');
             $table->timestamps();
         });
     }

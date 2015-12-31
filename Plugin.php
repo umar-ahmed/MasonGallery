@@ -18,7 +18,7 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'MasonGallery',
+            'name'        => 'Mason Gallery',
             'description' => 'Lightbox gallery plugin using Masonry',
             'author'      => 'Umar Ahmed',
             'icon'        => 'icon-photo',
@@ -61,9 +61,22 @@ class Plugin extends PluginBase
     public function registerComponents() {
         return [
             'UMAR\MasonGallery\Components\MasonGallery' => 'masonGallery',
+            'UMAR\MasonGallery\Components\MasonGalleryList' => 'masonGalleryList',
         ];
     }
     
+    /**
+     * Registers page snippets
+     *
+     * @return array
+     */
+    public function registerPageSnippets()
+    {
+        return [
+           'UMAR\MasonGallery\Components\MasonGallery' => 'masonGallery'
+        ];
+    }
+
     
     /**
      * Returns permissions associated with this plugin.
